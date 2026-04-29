@@ -1,1 +1,10 @@
-{}
+{
+  "BaseFolder": "C:\\DumpOutput",
+  "Database": {
+    "Server": "SERVER_NAME",
+    "DatabaseName": "DB_NAME",
+    "Username": "sa",
+    "Password": "your_password",
+    "Port": 1433
+  }
+}
