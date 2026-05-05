@@ -1,5 +1,5 @@
 {
-  "BaseFolder": "C:\\DumpOutput",
+  "BaseFolder": "D:\\DumpOutput",
   "Database": {
     "Server": "SERVER_NAME",
     "DatabaseName": "DB_NAME",
