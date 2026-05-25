@@ -52,7 +52,7 @@ try
     var result = folderService.Execute(runFolderPath, records, appBaseDir);
 
     // ── Summary ───────────────────────────────────────────────────────────────
-    string summaryPath = Path.Combine(runFolderPath, $"Summary_{timestamp}.txt");
+    string summaryPath = Path.Combine(config.BaseFolder, $"Summary_{timestamp}.txt");
     var reportService = new ReportService();
     reportService.WriteSummary(summaryPath, runTime, result);
     log.Info($"Summary written: {summaryPath}");
