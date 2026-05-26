@@ -21,6 +21,15 @@ public class PdfMergeServiceTests : IDisposable
         0xFF, 0xFF, 0xFF, 0x00
     };
 
+    // Minimal 4×1 white BMP (66 bytes) — landscape orientation.
+    private static readonly byte[] LandscapeBmpBytes = {
+        0x42, 0x4D, 0x42, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x36, 0x00, 0x00, 0x00,
+        0x28, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00,
+        0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF,
+        0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+    };
+
     public PdfMergeServiceTests()
     {
         _tmpDir  = Path.Combine(Path.GetTempPath(), $"PdfMergeTests_{Guid.NewGuid():N}");
@@ -46,6 +55,13 @@ public class PdfMergeServiceTests : IDisposable
     {
         string path = Path.Combine(_tmpDir, name ?? $"{Guid.NewGuid():N}.bmp");
         File.WriteAllBytes(path, MinimalBmpBytes);
+        return path;
+    }
+
+    private string MakeLandscapeBmp(string? name = null)
+    {
+        string path = Path.Combine(_tmpDir, name ?? $"{Guid.NewGuid():N}.bmp");
+        File.WriteAllBytes(path, LandscapeBmpBytes);
         return path;
     }
 
@@ -161,5 +177,18 @@ public class PdfMergeServiceTests : IDisposable
         string output = Path.Combine(_tmpDir, "out.pdf");
 
         Assert.Throws<InvalidOperationException>(() => _svc.Merge([c1, c2], output));
+    }
+
+    [Fact]
+    public void LandscapeImage_ProducesPageWiderThanTall()
+    {
+        string src    = MakeLandscapeBmp();
+        string output = Path.Combine(_tmpDir, "out.pdf");
+
+        _svc.Merge([src], output);
+
+        using var doc = PdfReader.Open(output, PdfDocumentOpenMode.Import);
+        PdfPage page  = doc.Pages[0];
+        Assert.True(page.Width.Point > page.Height.Point);
     }
 }

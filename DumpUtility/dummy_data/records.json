@@ -5,6 +5,8 @@
 
   { "EmployeeId": 123, "EmployeeName": "Rishikesh", "FolderPath": "1. Documents for Onboarding/1.4 Photograph",                          "FilePath": "dummy_data/img/rishikesh.jfif"  },
   { "EmployeeId": 123, "EmployeeName": "Rishikesh", "FolderPath": "1. Documents for Onboarding/1.4 Photograph",                          "FilePath": "dummy_data/img/rishikesh2.jfif" },
+  { "EmployeeId": 123, "EmployeeName": "Rishikesh", "FolderPath": "1. Documents for Onboarding/1.4 Photograph",                          "FilePath": "dummy_data/img/rishikesh3.webp" },
+  { "EmployeeId": 123, "EmployeeName": "Rishikesh", "FolderPath": "1. Documents for Onboarding/1.4 Photograph",                          "FilePath": "dummy_data/img/rishikesh4.jpg"  },
 
   { "EmployeeId": 123, "EmployeeName": "Rishikesh", "FolderPath": "2. Education Proof/2.1 SSC",                                          "FilePath": "dummy_data/pdf/rishikesh.pdf"   },
   { "EmployeeId": 123, "EmployeeName": "Rishikesh", "FolderPath": "2. Education Proof/2.1 SSC",                                          "FilePath": "dummy_data/img/rishikesh.jfif"  },
@@ -25,6 +27,7 @@
   { "EmployeeId": 456, "EmployeeName": "Aamir", "FolderPath": "1. Documents for Onboarding/1.1 CV Signed",                               "FilePath": "dummy_data/pdf/aamir2.pdf"      },
 
   { "EmployeeId": 456, "EmployeeName": "Aamir", "FolderPath": "1. Documents for Onboarding/1.4 Photograph",                              "FilePath": "dummy_data/img/aamir.jfif"      },
+  { "EmployeeId": 456, "EmployeeName": "Aamir", "FolderPath": "1. Documents for Onboarding/1.4 Photograph",                              "FilePath": "dummy_data/img/aamir3.jpg"      },
 
  
   { "EmployeeId": 456, "EmployeeName": "Aamir", "FolderPath": "2. Education Proof/2.1 SSC",                                              "FilePath": "dummy_data/pdf/aamir2.pdf"      },

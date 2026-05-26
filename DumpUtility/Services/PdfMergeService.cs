@@ -55,12 +55,14 @@ public class PdfMergeService
 
     private static void AppendImagePage(string sourcePath, PdfDocument output)
     {
-        PdfPage page   = output.AddPage();
-        page.Width     = XUnit.FromMillimeter(210);
-        page.Height    = XUnit.FromMillimeter(297);
+        using XImage image = XImage.FromFile(sourcePath);
 
-        using XGraphics gfx   = XGraphics.FromPdfPage(page);
-        using XImage    image = XImage.FromFile(sourcePath);
+        bool landscape = image.PixelWidth > image.PixelHeight;
+        PdfPage page   = output.AddPage();
+        page.Width     = XUnit.FromMillimeter(landscape ? 297 : 210);
+        page.Height    = XUnit.FromMillimeter(landscape ? 210 : 297);
+
+        using XGraphics gfx = XGraphics.FromPdfPage(page);
 
         double scaleX = page.Width.Point  / image.PixelWidth;
         double scaleY = page.Height.Point / image.PixelHeight;

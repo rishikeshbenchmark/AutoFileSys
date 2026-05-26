@@ -32,7 +32,8 @@ log.Info($"Config loaded. BaseFolder: {config.BaseFolder}. DB config present: {!
 try
 {
     // ── Data ──────────────────────────────────────────────────────────────────
-    string recordsPath = Path.Combine(appBaseDir, "dummy_data", "records.json");
+    //string recordsPath = Path.Combine(appBaseDir, "dummy_data", "records.json");
+    string recordsPath = Path.Combine(appBaseDir, "dummy_data", "records2.json");
     IDataService dataService = new DummyDataService(recordsPath);
     var records = dataService.GetRecords().ToList();
     log.Info($"Loaded {records.Count} record(s) from data service.");
