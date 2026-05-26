@@ -13,6 +13,8 @@ public class ReportService
         sb.AppendLine($"Employees       : {result.EmployeePaths.Count}");
         sb.AppendLine($"Folders Created : {result.FoldersCreated}");
         sb.AppendLine($"Files Written   : {result.FilesWritten}");
+        sb.AppendLine($"Merged Groups   : {result.MergedGroups}");
+        sb.AppendLine($"Files in Merges : {result.FilesProcessedInMerge}");
         sb.AppendLine($"Files Skipped   : {result.SkippedFiles.Count}");
         sb.AppendLine();
         sb.AppendLine("Employees Processed:");

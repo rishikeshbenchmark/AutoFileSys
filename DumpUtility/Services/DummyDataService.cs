@@ -16,6 +16,11 @@ public class DummyDataService : IDataService
 
         string json = File.ReadAllText(_recordsPath);
         return JsonSerializer.Deserialize<List<DocumentRecord>>(json,
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                ReadCommentHandling = JsonCommentHandling.Skip,
+                AllowTrailingCommas = true
+            }) ?? [];
     }
 }

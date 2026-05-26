@@ -48,7 +48,8 @@ try
     Console.WriteLine();
 
     // ── Folder + file operations ──────────────────────────────────────────────
-    var folderService = new FolderService(log);
+    var mergeService  = new PdfMergeService(log);
+    var folderService = new FolderService(log, mergeService);
     var result = folderService.Execute(runFolderPath, records, appBaseDir);
 
     // ── Summary ───────────────────────────────────────────────────────────────
@@ -66,6 +67,7 @@ try
     Console.WriteLine($"  Employees : {result.EmployeePaths.Count}");
     Console.WriteLine($"  Folders   : {result.FoldersCreated}");
     Console.WriteLine($"  Files     : {result.FilesWritten}");
+    Console.WriteLine($"  Merged    : {result.MergedGroups} group(s) from {result.FilesProcessedInMerge} source file(s)");
     Console.WriteLine($"  Skipped   : {result.SkippedFiles.Count}");
     Console.WriteLine($"  Summary   : {summaryPath}");
     Console.WriteLine($"  Log       : {logFilePath}");

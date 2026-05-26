@@ -55,4 +55,26 @@ public class FileNamingHelperTests
         Assert.Equal("CV Signed_0123-Rishikesh_1.pdf",  first);
         Assert.Equal("CV Signed_0123-Rishikesh_2.docx", second);
     }
+
+    [Fact]
+    public void BuildMergedFileName_HasNoPrefixAndPdfExtension()
+    {
+        var result = FileNamingHelper.BuildMergedFileName("CV Signed", "0123-Rishikesh");
+        Assert.Equal("CV Signed_0123-Rishikesh.pdf", result);
+    }
+
+    [Theory]
+    [InlineData("Education Proof", "0456-Aamir",    "Education Proof_0456-Aamir.pdf")]
+    [InlineData("Mid-Year",        "9999-Test",     "Mid-Year_9999-Test.pdf")]
+    public void BuildMergedFileName_PatternIsConsistent(string subcat, string empFolder, string expected)
+    {
+        Assert.Equal(expected, FileNamingHelper.BuildMergedFileName(subcat, empFolder));
+    }
+
+    [Fact]
+    public void BuildMergedFileName_SanitizesInvalidChars()
+    {
+        var result = FileNamingHelper.BuildMergedFileName("Doc:Name", "0001-A/B");
+        Assert.Equal("Doc_Name_0001-A_B.pdf", result);
+    }
 }

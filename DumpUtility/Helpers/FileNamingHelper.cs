@@ -30,4 +30,7 @@ public static class FileNamingHelper
 
     public static string BuildFileName(string subcategoryName, string employeeFolder, int sequence, string extension) =>
         $"{SanitizeSegment(subcategoryName)}_{SanitizeSegment(employeeFolder)}_{sequence}{extension}";
+
+    public static string BuildMergedFileName(string subcategoryName, string employeeFolder) =>
+        $"{SanitizeSegment(subcategoryName)}_{SanitizeSegment(employeeFolder)}.pdf";
 }
